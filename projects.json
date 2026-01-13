@@ -1,23 +1,19 @@
 {
   "projects": [
     {
-      "name": "Space Engine",
-      "url": "https://github.com/SpacesXD/space-engine",
-      "tags": ["C", "Engine", "Experimental"]
+      "name": "military td",
+      "url": "https://suitscapedevelopers.itch.io/military-td",
+      "tags": ["java", "juego", "towerdefense"]
     },
     {
-      "name": "Mini Game",
-      "url": "https://spacesxd.itch.io/minigame",
-      "tags": ["Game", "HTML", "JS"]
+      "name": "SpaceBOX",
+      "url": "https://suitscapedevelopers.itch.io/space-b0x",
+      "tags": ["Game", "java", "space"]
     },
     {
-      "name": "Tool Random",
-      "url": "https://github.com/SpacesXD/tool",
-      "tags": ["CLI"]
-    },
-    {
-      "name": "Proyecto Sin Tags",
-      "url": "https://example.com"
+      "name": "the last delivery",
+      "url": "https://suitscapedevelopers.itch.io/the-last-delivery-1",
+      "tags": ["Game"]
     }
   ]
 }
