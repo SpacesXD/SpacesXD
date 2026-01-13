@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SpacesXD | Indie Developer</title>
+  <style>
+    :root {
+      --bg: #ffffff;
+      --card: #f4f4f4;
+      --text: #0a0a0a;
+      --muted: #666666;
+      --accent: #000000;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+
+    body {
+      background: #ffffff;
+      color: var(--text);
+      min-height: 100vh;
+    }
+
+    header {
+      padding: 3rem 1.5rem;
+      text-align: center;
+    }
+
+    .logo {
+      font-size: 3rem;
+      font-weight: 800;
+      letter-spacing: 4px;
+      color: var(--accent);
+    }
+
+    .tagline {
+      margin-top: 0.75rem;
+      color: var(--muted);
+      font-size: 1.1rem;
+    }
+
+    main {
+      max-width: 900px;
+      margin: auto;
+      padding: 1.5rem;
+      display: grid;
+      gap: 1.5rem;
+    }
+
+    .card {
+      background: var(--card);
+      border-radius: 14px;
+      padding: 1.5rem;
+      box-shadow: none;
+      border: 1px solid #e0e0e0;
+    }
+
+    h2 {
+      margin-bottom: 0.75rem;
+      color: var(--accent);
+    }
+
+    p {
+      line-height: 1.6;
+      color: var(--text);
+    }
+
+    .projects {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      max-height: 260px;
+      overflow-y: auto;
+      padding-right: 0.5rem;
+    }
+
+    .projects::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    .projects::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    .projects::-webkit-scrollbar-thumb {
+      background: #000000;
+      border-radius: 10px;
+    }
+
+    .project {
+      background: #ffffff;
+      border-radius: 12px;
+      padding: 1rem;
+      border: 1px solid #dcdcdc;
+      transition: transform 0.15s ease, border-color 0.15s ease;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .project:hover {
+      transform: translateY(-2px);
+      border-color: #000000;
+    }
+
+    .project h3 {
+      color: #000000;
+      margin-bottom: 0.25rem;
+      font-weight: 600;
+    }
+
+    .project span {
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem 1rem;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .links {
+      margin-top: 1rem;
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .links a {
+      text-decoration: none;
+      color: #000000;
+      border: 1px solid #000000;
+      padding: 0.4rem 1rem;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      transition: background 0.15s ease, color 0.15s ease;
+    }
+
+    .links a:hover {
+      background: #000000;
+      color: #ffffff;
+    }
+  </style>
+<script>
+// Carga dinámica de proyectos desde projects.json
+fetch('projects.json')
+  .then(r => r.json())
+  .then(data => {
+    const container = document.getElementById('projects-container');
+    container.innerHTML = '';
+
+    data.projects.forEach(p => {
+      const card = document.createElement('a');
+      card.className = 'project';
+      card.href = p.url || '#';
+      card.target = '_blank';
+
+      const title = document.createElement('h3');
+      title.textContent = p.name;
+
+      const tags = document.createElement('span');
+      tags.textContent = p.tags ? p.tags.join(' · ') : '';
+
+      card.appendChild(title);
+      card.appendChild(tags);
+      container.appendChild(card);
+    });
+  })
+  .catch(err => console.error('Error cargando projects.json', err));
+</script>
+</head>
+<body>
+
+  <header>
+    <div class="logo">SpacesXD</div>
+    <div class="tagline">Indie Developer · Games · Experiments · Code</div>
+  </header>
+
+  <main>
+    <section class="card">
+      <h2>Sobre mí</h2>
+      <p>
+        Soy <b>SpacesXD</b>, desarrollador indie. Me gusta crear juegos, motores,
+        experimentos raros y aprender tocando el código directamente.
+        Mi icono es mi nombre, simple y directo 😎.
+      </p>
+    </section>
+
+    <section class="card">
+      <h2>Proyectos</h2>
+      <div class="projects" id="projects-container">
+        <!-- Proyectos cargados desde projects.json -->
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Contacto</h2>
+      <p>Encuéntrame o sígueme aquí:</p>
+      <div class="links">
+        <a href="https://github.com/SpacesXD/" target="_blank">GitHub</a>
+        <a href="https://spacesxd.itch.io/" target="_blank">Itch.io</a>
+        <a href="https://www.youtube.com/@spacesxd" target="_blank">YouTube</a>
+        <a href="https://discord.gg/Dbu49hmc6" target="_blank">Discord</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    © 2026 SpacesXD · Indie Dev
+  </footer>
+
+</body>
+</html>
