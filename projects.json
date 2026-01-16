@@ -1,19 +1,19 @@
 {
   "projects": [
     {
-      "name": "military td",
-      "url": "https://suitscapedevelopers.itch.io/military-td",
-      "tags": ["java", "juego", "towerdefense"]
+      "name": "Space Shooter",
+      "url": "https://spacesxd.itch.io/space-shooter",
+      "tags": ["game", "indie", "html"]
     },
     {
-      "name": "SpaceBOX",
-      "url": "https://suitscapedevelopers.itch.io/space-b0x",
-      "tags": ["Game", "java", "space"]
+      "name": "Spaces Engine",
+      "file": "engine/index.html",
+      "tags": ["engine", "c", "experimental"],
+      "featured": true
     },
     {
-      "name": "the last delivery",
-      "url": "https://suitscapedevelopers.itch.io/the-last-delivery-1",
-      "tags": ["Game"]
+      "name": "Internal Tool",
+      "file": "tools/index.html"
     }
   ]
 }
