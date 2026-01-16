@@ -187,7 +187,7 @@
 <script>
 <script>
 // Carga dinámica de proyectos desde projects.json
-fetch('projects.json')
+fetch('./projects.json')
   .then(r => r.json())
   .then(data => {
     const container = document.getElementById('projects-container');
