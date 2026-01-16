@@ -36,12 +36,14 @@
       font-weight: 800;
       letter-spacing: 4px;
       color: var(--accent);
+      animation: fadeDown 0.6s ease forwards;
     }
 
     .tagline {
       margin-top: 0.75rem;
       color: var(--muted);
-      font-size: 1.1rem;
+      font-size: 1.05rem;
+      animation: fadeDown 0.8s ease forwards;
     }
 
     main {
@@ -147,7 +149,42 @@
       background: #000000;
       color: #ffffff;
     }
-  </style>
+  @keyframes fadeDown {
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .card {
+      animation: fadeUp 0.5s ease both;
+    }
+
+    .featured {
+      border: 2px solid #000000;
+      background: #ffffff;
+    }
+
+    .tags {
+      margin-top: 0.35rem;
+      display: flex;
+      gap: 0.4rem;
+      flex-wrap: wrap;
+    }
+
+    .tag {
+      font-size: 0.7rem;
+      border: 1px solid #000000;
+      padding: 0.1rem 0.45rem;
+      border-radius: 999px;
+      opacity: 0.75;
+    }
+
+</style>
+<script>
 <script>
 // Carga dinámica de proyectos desde projects.json
 fetch('projects.json')
@@ -158,19 +195,36 @@ fetch('projects.json')
 
     data.projects.forEach(p => {
       const card = document.createElement('a');
+      if (p.featured) card.classList.add('featured');
       card.className = 'project';
-      card.href = p.url || '#';
-      card.target = '_blank';
+
+      // Si existe "file", se usa como ruta local; si no, se usa "url"
+      if (p.file) {
+        card.href = p.file;
+        card.target = '_self';
+      } else if (p.url) {
+        card.href = p.url;
+        card.target = '_blank';
+      } else {
+        card.href = '#';
+      }
 
       const title = document.createElement('h3');
-      title.textContent = p.name;
+      title.textContent = p.name || 'Proyecto sin nombre';
 
-      const tags = document.createElement('span');
-      tags.textContent = p.tags ? p.tags.join(' · ') : '';
-
-      card.appendChild(title);
-      card.appendChild(tags);
+      if (p.tags) {
+        const tagWrap = document.createElement('div');
+        tagWrap.className = 'tags';
+        p.tags.forEach(t => {
+          const tag = document.createElement('span');
+          tag.className = 'tag';
+          tag.textContent = t.toUpperCase();
+          tagWrap.appendChild(tag);
+        });
+        card.appendChild(tagWrap);
+      }
       container.appendChild(card);
+    });
     });
   })
   .catch(err => console.error('Error cargando projects.json', err));
@@ -178,7 +232,7 @@ fetch('projects.json')
 </head>
 <body>
 
-  <header>
+  <header class="intro">
     <div class="logo">SpacesXD</div>
     <div class="tagline">Indie Developer · Games · Experiments · Code</div>
   </header>
