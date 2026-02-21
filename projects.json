@@ -1,19 +1,10 @@
 {
   "projects": [
     {
-      "name": "Space Shooter",
-      "url": "https://spacesxd.itch.io/space-shooter",
-      "tags": ["game", "indie", "html"]
-    },
-    {
-      "name": "Spaces Engine",
-      "file": "engine/index.html",
-      "tags": ["engine", "c", "experimental"],
+      "name": "Voxaria",
+      "url": "https://spacesxd.itch.io/voxaria",
+      "tags": ["voxels","game", "indie", "html"],
       "featured": true
-    },
-    {
-      "name": "Internal Tool",
-      "file": "tools/index.html"
     }
-  ]
+  ] 
 }
